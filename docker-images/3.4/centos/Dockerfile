@@ -72,6 +72,15 @@ RUN     buildDeps="autoconf \
         echo "${SRC}/lib" > /etc/ld.so.conf.d/libc.conf && \
         yum --enablerepo=extras install -y epel-release && \
         yum install -y ${buildDeps}
+## Do Something Before Install FFmpeg
+RUN \
+rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \
+rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
+
+RUN \
+yum -y install httpd && \
+yum -y install php70w php70w-opcache php70w-cli php70w-common php70w-dba php70w-devel php70w-gd php70w-imap php70w-ldap php70w-mbstring  php70w-mcrypt php70w-mysql php70w-mysqlnd php70w-pdo php70w-pear php70w-pecl-apcu php70w-xml php70w-xmlrpc
+
 ## opencore-amr https://sourceforge.net/projects/opencore-amr/
 RUN \
         DIR=/tmp/opencore-amr && \
@@ -340,3 +349,4 @@ COPY --from=build /usr/local/ /usr/local/
 
 # Let's make sure the app built correctly
 # Convenient to verify on https://hub.docker.com/r/jrottenberg/ffmpeg/builds/ console output
+
