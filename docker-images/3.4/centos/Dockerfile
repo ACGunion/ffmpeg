@@ -79,7 +79,7 @@ rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
 
 RUN \
 yum -y install httpd && \
-yum -y install php70w php70w-opcache php70w-cli php70w-common php70w-dba php70w-devel php70w-gd php70w-imap php70w-ldap php70w-mbstring  php70w-mcrypt php70w-mysql php70w-mysqlnd php70w-pdo php70w-pear php70w-pecl-apcu php70w-xml php70w-xmlrpc
+yum -y install php70w php70w-opcache php70w-cli php70w-common php70w-dba php70w-devel php70w-gd php70w-imap php70w-ldap php70w-mbstring  php70w-mcrypt php70w-mysqlnd php70w-pdo php70w-pear php70w-pecl-apcu php70w-xml php70w-xmlrpc
 
 ## opencore-amr https://sourceforge.net/projects/opencore-amr/
 RUN \
@@ -339,9 +339,6 @@ RUN \
 
 FROM        base
 MAINTAINER  Julien Rottenberg <julien@rottenberg.info>
-
-CMD         ["--help"]
-ENTRYPOINT  ["ffmpeg"]
 
 ENV LD_LIBRARY_PATH=/usr/local/lib64
 
